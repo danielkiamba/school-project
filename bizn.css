@@ -41,12 +41,31 @@ section {
 }
 /* home section */
 #home {
-    background-color: #f7dc6f;
+    background-image: url(our-campuses-runda.jpeg);
     padding: 20px;
     text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.mytext {
+    font-size: 30px;
+    color: rgb(217, 255, 0);
+    font-family: cursive;
+    font-weight: bold;
+    line-height: 2;
 }
 #home h1 {
     margin-top: 0;
+    margin-bottom: 110px;
+    font-family:serif;
+    font-size: 46px;
+    font-weight: bold;
 }
 #home button {
     background-color: #4caf50;
@@ -92,9 +111,13 @@ footer {
 #contact {
     background-color: #ffa723;
     padding: 20px;
+    display: flexbox;
+    width: 40%;
+    margin-bottom: 0;
 }
 #contact h1 {
     margin-top: 0;
+    text-align: center;
 }
 form {
     margin-top: 20px;
@@ -103,13 +126,15 @@ form {
     margin-bottom: 20px;
 }
 input {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
 }
 textarea {
     height: 100px;
+    width: 200px;
+    margin-bottom: 0;
 }
 button[type="submit"] {
     background-color: #4caf50;
@@ -118,8 +143,40 @@ button[type="submit"] {
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    margin-top: 0;
 }
 button[type="submit"]:hover {
 background-color: #3e8e41;
 
+}
+.image-school {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+.image-school img {
+    max-width: 100%;
+    max-height: 550px;
+}
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items:stretch;
+}
+
+@media (max-width: 768px) {
+    .get-in -touch, .image-school {
+        flex: 100%;
+        margin-right: 0;
+    }
+
+    .image-school img {
+        height: 325px
+    };
+    .contact-container {
+        height: auto;
+    }
+    .image-school {
+        flex-direction: column;
+    }
 }
