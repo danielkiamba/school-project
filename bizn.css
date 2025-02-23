@@ -374,9 +374,14 @@ margin: 20px 0;
 .whatsapp{
     margin-left: 20px;
 }
+
 /*loading="lazy" referrerpolicy="no-referrer-when-downgrade"*/
 
 @media (min-width:300px) and (max-width: 1000px) {
+   
+   #display-screen{
+    display: none;
+   }
    footer{
     display: none;
    }
