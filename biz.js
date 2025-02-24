@@ -20,3 +20,19 @@ function updateDateTime(){
 }
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+let headerColour = document.querySelector(`header`);
+let colours = [`red`,`blue`,`green`,`pink`];
+let counter = 0;
+
+function changeColour(){
+if(counter >= colours.length){
+    counter = 0;
+}
+
+headerColour.style.background = colours[counter];
+counter +=1;
+
+}
+
+setInterval(changeColour, 4000);
