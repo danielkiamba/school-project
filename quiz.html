@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Hardware Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            /*background-color: #f4f4f4; */
+            background-color: greenyellow;
+            margin: 20px;
+        }
+        .quiz-container {
+            background: #ffa723;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .answers button, #next-btn, #restart-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .answers button:hover, #next-btn:hover, #restart-btn:hover {
+            background: #0056b3;
+        }
+        #result {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #feedback {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Welcome to Science Trivia Quiz</h1>
+        <p>Test your knowledge about the fascinating world of science with our 32 fun trivia questions! whether you're a novice or a science enthuasiast, challenge yourself and learn something new along the way!~~Daniel Kiamba ~~ select an answer & scroll down and click Next for the next question; </p>
+        <div id="quiz">
+            <p class="question" id="question"></p>
+            <div class="answers" id="answers"></div>
+            <p id="feedback"></p>
+            <button id="next-btn" style="display: none;">Next</button>
+        </div>
+        <p id="result"></p>
+        <button id="restart-btn" style="display: none;">Restart Quiz</button>
+    </div>
+
+    <script>
+
+const quizData = [
+{ question: "What force keeps us on the ground and stops us from floating into space?", correct: "Gravity", options: ["Atmosphere", "Magnitude", "Gravity", "Turbulant"] },
+{ question: "What is the process of water turning into vapor called", correct: "Evaporation", options: ["Condensation", "Radiation", "Precipitation", "Evaporation"] },
+{ question: "What is the basic unit of life", correct: "Cell", options: ["Heart", "Organs", "Tissues", "Cell"] },
+{ question: "What is the powerhouse of the cell", correct: "Mitochondria", options: ["Nucleus", "Mitochondria", "Ribosome", "Endoplasmic Reticulum"] },
+{ question: "What is the largest planet in our solar system", correct: "Jupiter", options: ["Mars", "Venus", "Jupiter", "Saturn"] },
+{ question: "What is the smallest planet in our solar system", correct: "Mercury", options: ["Venus", "Earth", "Mars", "Mercury"] },
+{ question: "What is the closest planet to the sun", correct: "Mercury", options: ["Venus", "Earth", "Mars", "Mercury"] },
+{ question: "What is the farthest planet from the sun", correct: "Neptune", options: ["Uranus", "Neptune", "Pluto", "Saturn"] },
+{ question: "What is the hottest planet in our solar system", correct: "Venus", options: ["Mars", "Venus", "Jupiter", "Saturn"] },
+{ question: "What is the coldest planet in our solar system", correct: "Uranus", options: ["Uranus", "Neptune", "Pluto", "Saturn"] },
+{question: "What is the smallest bone in the human body", correct: "Stapes", options: ["Femur", "Tibia", "Stapes", "Fibula"] },
+{question: "What is the largest bone in the human body", correct: "Femur", options: ["Femur", "Tibia", "Stapes", "Fibula"] },
+{question: "What is the process of plants making their own food called", correct: "Photosynthesis", options: ["Respiration", "Transpiration", "Photosynthesis", "Germination"] },
+{question: "What is the largest organ in the human body", correct: "Skin", options: ["Heart", "Liver", "Kidney", "Skin"] },
+{question: "What is the smallest organ in the human body", correct: "Pineal Gland", options: ["Pineal Gland", "Thyroid Gland", "Pituitary Gland", "Adrenal Gland"] },
+{question: "What is the largest mammal in the world", correct: "Blue Whale", options: ["Elephant", "Giraffe", "Blue Whale", "Hippopotamus"] },
+{question: "What is the largest bird in the world", correct: "Ostrich", options: ["Eagle", "Ostrich", "Vulture", "Albatross"] },
+{question: "What is the chemical sympol for oxygen", correct: "O", options: ["O", "O2", "O3", "O4"] },
+{question: "What is the chemical sympol for water", correct: "H2O", options: ["H2O", "H2O2", "HO", "H3O"] },
+{question: "What is the only metal that is liquid at room temperature", correct: "Mercury", options: ["Iron", "Gold", "Mercury", "Silver"] },
+{question: "What is the hardest natural substance on Earth", correct: "Diamond", options: ["Gold", "Silver", "Platinum", "Diamond"] },
+{question: "What is the most abundant gas in the Earth's atmosphere", correct: "Nitrogen", options: ["Oxygen", "Carbon Dioxide",
+"Nitrogen", "Argon"] },
+{question: "What is the most abundant element in the Earth's crust", correct: "Oxygen", options: ["Silicon", "Aluminium", "Oxygen", "Iron"] },
+{question: "What is the most abundant element in the human body", correct: "Oxygen", options: ["Carbon", "Hydrogen", "Oxygen", "Nitrogen"] },
+{question: "What is the most abundant element in the universe", correct: "Hydrogen", options: ["Helium", "Oxygen", "Hydrogen", "Carbon"] },
+{question: "What is the most abundant metal in the Earth's crust", correct: "Aluminium", options: ["Iron", "Copper", "Aluminium", "Zinc"] },
+{question: "What is the most abundant metal in the human body", correct: "Iron", options: ["Calcium", "Magnesium", "Iron", "Potassium"] },
+{question: "What is the most abundant metal in the universe", correct: "Iron", options: ["Copper", "Gold", "Iron", "Silver"] },
+{question: "What is the most abundant mineral in the human body", correct: "Calcium", options: ["Iron", "Magnesium", "Calcium", "Potassium"] },
+{question: "What is the most abundant mineral in the Earth's crust", correct: "Feldspar", options: ["Quartz", "Feldspar", "Mica", "Pyroxene"] },
+{question: "How many bones are in the human body", correct: "206", options: ["206", "208", "210", "212"] },
+{question: "Which organ is responsible for producing insulin", correct:
+    "pancrease", options: ["liver", "pancrease", "kidney", "heart"] }
+
+];
+        
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+
+        function loadQuestion() {
+            document.getElementById("quiz").style.display = "block";
+            document.getElementById("result").innerText = "";
+            document.getElementById("restart-btn").style.display = "none";
+            
+            if (currentQuestion < quizData.length) {
+                document.getElementById("question").innerText = quizData[currentQuestion].question;
+                const answersDiv = document.getElementById("answers");
+                answersDiv.innerHTML = "";
+                document.getElementById("feedback").innerText = "";
+                document.getElementById("next-btn").style.display = "none";
+                
+                quizData[currentQuestion].options.forEach(option => {
+                    const btn = document.createElement("button");
+                    btn.innerText = option;
+                    btn.onclick = () => checkAnswer(option, btn);
+                    answersDiv.appendChild(btn);
+                });
+            } else {
+                showResult();
+            }
+        }
+
+        function checkAnswer(answer) {
+            if (answer === quizData[currentQuestion].correct) {
+                correctAnswers++;
+                document.getElementById("feedback").innerText = "Correct!";
+                document.getElementById("feedback").style.color = "green";
+            } else {
+                document.getElementById("feedback").innerText = `Incorrect! The correct answer is ${quizData[currentQuestion].correct}.`;
+                document.getElementById("feedback").style.color = "red";
+            }
+            document.getElementById("next-btn").style.display = "block";
+        }
+
+        document.getElementById("next-btn").addEventListener("click", () => {
+            currentQuestion++;
+            loadQuestion();
+        });
+
+        function showResult() {
+            const percentage = Math.round((correctAnswers / quizData.length) * 100);
+            let message = "";
+            if (percentage >= 80) message = "Great Job!";
+            else if (percentage >= 60) message = "You did good!";
+            else message = "You need to study more!";
+            
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("result").innerText = `You got ${correctAnswers} out of ${quizData.length} correct. You scored ${percentage}%. ${message}`;
+            document.getElementById("restart-btn").style.display = "block";
+        }
+
+        document.getElementById("restart-btn").addEventListener("click", () => {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            loadQuestion();
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>
+
+
+
+

@@ -27,12 +27,27 @@ header nav ul li {
     margin: 10px;
     padding: 20px;
     font-size: 20px;
+    text-transform: uppercase;
 }
 header nav a {
     color: #fff;
     text-decoration: none;
     padding: 10px 15px;
 
+}
+#dquiz{
+    background-color: #4caf50;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background-color 0.6s ease-in-out;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 5px 5px 5px rgba(255, 167, 35, 0.8),
+                5px 5px 5px rgba(145, 35, 255, 0.154);
+}
+#dquiz:hover {
+    background-color: #3e8e41;
+    color: #fff;
 }
 header nav a:hover {
     background-color: #8bc34a;

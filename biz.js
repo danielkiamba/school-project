@@ -36,3 +36,13 @@ counter +=1;
 }
 
 setInterval(changeColour, 4000);
+
+
+function showQuiz() {
+    document.getElementById("quizModal").style.display = "block";
+}
+
+function closeQuiz() {
+    document.getElementById("quizModal").style.display = "none";
+}
+
