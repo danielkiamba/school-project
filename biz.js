@@ -21,21 +21,26 @@ function updateDateTime(){
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-let headerColour = document.querySelector(`header`);
-let colours = [`red`,`blue`,`green`,`pink`];
-let counter = 0;
+//let headerColour = document.querySelector(`header`);
+/*let colours = [`red`,`blue`,`green`,`pink`];
+let counter = 0;*/
 
-function changeColour(){
-if(counter >= colours.length){
-    counter = 0;
-}
 
-headerColour.style.background = colours[counter];
-counter +=1;
+function headerColors(){
+    headerColour = document.getElementsByTagName(`header`)[0];
+    let red = Math.round(Math.random()*255);
+    
+    let green = Math.round(Math.random()*255);
+    
+    let blue = Math.round(Math.random()*255);
+    
+    let changeColour = `rgb(${red},${green},${blue})`;
+    headerColour.style.backgroundColor = changeColour;
+    }
+    
+    
 
-}
-
-setInterval(changeColour, 4000);
+setInterval(headerColors, 4000);
 
 
 function showQuiz() {
@@ -43,6 +48,6 @@ function showQuiz() {
 }
 
 function closeQuiz() {
-    document.getElementById("quizModal").style.display = "none";
-}
+    document.getElementById("quizModal").style.display = "none"; 
+} 
 
