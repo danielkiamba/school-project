@@ -140,5 +140,44 @@ const reviews = [
   
     showPerson(currentItem);
   });
+
+
+function primeNumber() {
+  let input = document.getElementById("prime").value.trim();
+  let isPrime = true;
+  const x = document.getElementById("loop");
+  
+
+  try {
+      if (input === `` || isNaN(input)) {
+          throw new Error(`${input} is not a valid number. Please enter a number.`);
+      }
+  
+      let number = Number(input);
+      // Check if number is 1
+      if (number === 1) {
+          x.innerHTML = "1 is neither a prime nor composite number.";
+          return;
+      }
+
+      // Check if number is greater than 1
+      else if (number > 1) {
+          for (let i = 2; i <= Math.sqrt(number); i++) {
+              if (number % i === 0) {
+                  isPrime = false;
+                  break;
+              }
+          }
+
+          x.innerHTML = isPrime ? `${number} is a prime number.` : `${number} is not a prime number.`;
+      } else {
+          x.innerHTML = `${number} is not a prime number. Numbers less than 1 are not considered prime numbers.`;
+      }
+  } catch (error) {
+      console.error(error);
+      x.innerHTML = error.message; // Ensure the error message is displayed
+  }
+}
+
   
 
