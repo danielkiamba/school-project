@@ -394,6 +394,7 @@ margin: 20px 0;
    /* align-items: center;*/
     height: auto;
     background-color: rgba(255, 239, 11, 0.552);
+    position: relative;
     
 }
 .container{
@@ -555,6 +556,95 @@ margin: 20px 0;
     color: aqua;
     font-size: 18px;
 }
+/* code generator section */
+
+
+.random-quote{
+    background-color: rgb(104, 110, 234);
+    height: 40vh;
+    width: 80vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+}
+.random-q{
+    background-color: #fff;
+    width: 70%;
+    height: 80%;
+    position: relative;
+    text-align: center;
+    border-radius: 5px;
+}
+.random-q-btn{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    text-transform: capitalize;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background: linear-gradient(45deg,purple, blue);
+    font-size: 14px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #fff;
+    cursor: pointer;
+}
+.copy-btn{
+    position: absolute;
+    bottom: 10px;
+    left: 25px;
+    text-transform: capitalize;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: black;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #fff;
+    cursor: pointer;
+
+}
+
+.copy-btn[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%; /* Position above the button */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+
+.random-q hr{
+    position: absolute;
+    bottom: 40px;
+    right: 15px;
+    width: 90%;
+    border: 2px solid blue;
+
+}
+.random-q h1{
+    text-transform: capitalize;
+    color: rgb(0, 128, 4);
+}
+#quote{
+    font-size: 18px;
+}
+
 
 
 
