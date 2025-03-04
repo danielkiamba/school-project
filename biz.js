@@ -51,6 +51,7 @@ function closeQuiz() {
     document.getElementById("quizModal").style.display = "none"; 
 } 
 
+//  reviews section
 
 // local reviews
 const reviews = [
@@ -142,10 +143,14 @@ const reviews = [
   });
 
 
+// prime number section
+
+
 function primeNumber() {
   let input = document.getElementById("prime").value.trim();
   let isPrime = true;
   const x = document.getElementById("loop");
+  document.getElementById(`prime`).value = ``;
   
 
   try {
@@ -170,6 +175,7 @@ function primeNumber() {
           }
 
           x.innerHTML = isPrime ? `${number} is a prime number.` : `${number} is not a prime number.`;
+
       } else {
           x.innerHTML = `${number} is not a prime number. Numbers less than 1 are not considered prime numbers.`;
       }
@@ -177,6 +183,7 @@ function primeNumber() {
       console.error(error);
       x.innerHTML = error.message; // Ensure the error message is displayed
   }
+  
 }
 
   // quote generator section
