@@ -65,7 +65,7 @@ section {
     display: flex;
     background-repeat: no-repeat;
     background-position:top;
-    height: 450px;
+    height: 800px;
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
@@ -389,10 +389,10 @@ margin: 20px 0;
     margin-left: 20px;
 }
 .main1{
-    display: flex;
+    display: flex; 
     /*justify-content: center;8?
    /* align-items: center;*/
-    height: auto;
+    /* height: auto; */
     background-color: rgba(255, 239, 11, 0.552);
     position: relative;
     

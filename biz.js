@@ -25,7 +25,7 @@ setInterval(updateDateTime, 1000);
 /*let colours = [`red`,`blue`,`green`,`pink`];
 let counter = 0;*/
 
-
+/*
 function headerColors(){
     headerColour = document.getElementsByTagName(`header`)[0];
     let red = Math.round(Math.random()*255);
@@ -41,7 +41,7 @@ function headerColors(){
     
 
 setInterval(headerColors, 4000);
-
+*/
 
 function showQuiz() {
     document.getElementById("quizModal").style.display = "block";
